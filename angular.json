@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "cadastro-cliente",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./src/assets/ng2-select.css",
+              "src/styles.css"              
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {

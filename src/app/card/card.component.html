@@ -1,0 +1,11 @@
+<div class="card shadow p-1 mb-3 bg-white rounded">
+  <div class="card-header">
+    {{cliente.nome}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{cliente.email}}</h5>
+    <p class="card-text">{{cliente.data_nascimento}}</p>
+    <a [routerLink]="['/cadastro/', cliente.codigo]" class="btn btn-info">Ver Detalhes</a>
+    <ng-content selector="button"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<cadastro-cliente-header>
+  Listagem
+</cadastro-cliente-header>
+<div class="row">
+    <div class="col-md-6">
+        <cadastro-cliente-mensagem *ngIf="mensagem != '' && mensagem" [tipo]="tipo" [texto]="mensagem">
+        </cadastro-cliente-mensagem>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-4" *ngFor="let cliente of clientes">
+    <cadastro-cliente-card [cliente]="cliente">
+      <button class="btn btn-danger ml-2" (click)="remover(cliente.codigo)">Remover</button>
+    </cadastro-cliente-card>
+  </div>
+</div>

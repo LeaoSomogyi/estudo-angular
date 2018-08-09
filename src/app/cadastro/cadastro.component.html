@@ -1,0 +1,99 @@
+<cadastro-cliente-header>
+  {{titulo}}
+</cadastro-cliente-header>
+<main class="container">
+  <section class="row">
+    <cadastro-cliente-mensagem *ngIf="mensagem != '' && mensagem" [tipo]="tipo" [texto]="mensagem"></cadastro-cliente-mensagem>
+    <form (submit)="cadastrar()" #form="ngForm" class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Nome</label>
+            <input 
+              required
+              name="nome" 
+              #nome = "ngModel"
+              [(ngModel)]="cliente.nome"               
+              class="form-control">
+              <span *ngIf="nome.invalid && nome.touched" class="form-control alert-danger">
+                Preencha o campo 'Nome'
+              </span>
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input 
+              required
+              name="email" 
+              #email = "ngModel"
+              [(ngModel)]="cliente.email"              
+              type="text" class="form-control" />
+              <span *ngIf="email.invalid && email.touched" class="form-control alert-danger">
+                Preencha o campo 'E-mail'
+              </span>
+          </div>
+          <div class="form-group">
+            <label>Data de Nascimento</label>
+            <input 
+              required
+              name="data_nascimento" 
+              #data = "ngModel"
+              [(ngModel)]="cliente.data_nascimento"            
+              type="text" class="form-control" />
+              <span *ngIf="data.invalid && data.touched" class="form-control alert-danger">
+                  Preencha o campo 'Data de Nascimento'
+              </span>
+          </div>
+          <div class="form-group">
+              <button class="btn btn-primary col-sm-3 form-control" [disabled]="form.form.invalid">{{botao}}</button>
+          </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Logradouro</label>
+            <input 
+              name="logradouro" 
+              [(ngModel)]="endereco.logradouro" 
+              #logradouro = "ngModel" required
+              type="text" class="form-control">
+              <span *ngIf="logradouro.invalid && logradouro.touched" class="form-control alert-danger">
+                  Preencha o campo 'Logradouro'
+              </span>
+          </div>
+          <div class="form-group">
+            <label>Numero</label>
+            <input 
+              name="numero" 
+              [(ngModel)]="endereco.numero" 
+              #numero = "ngModel" required
+              type="text" class="form-control">
+              <span *ngIf="numero.invalid && numero.touched" class="form-control alert-danger">
+                  Preencha o campo 'Numero'
+              </span>
+          </div>
+          <div class="form-group">
+            <label>Complemento</label>
+            <input 
+              name="complemento" 
+              [(ngModel)]="endereco.complemento" type="text" class="form-control">
+          </div>          
+        </div>
+      </div>
+    </form>    
+  </section>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3"></div>
+    <div class="form-group col-sm-3" *ngIf="isEdicao">
+      <button class="btn btn-success btn-lg" (click)="adicionarEndereco()" [disabled]="form.form.invalid">
+        <fa name="{{icon}}"></fa> {{botaoEndereco}}
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="enderecos.length > 0">
+    <div class="col-md-4" *ngFor="let endereco of enderecos">
+      <cadastro-cliente-endereco [endereco]="endereco">
+        <button class="btn btn-danger ml-2" (click)="removerEndereco(endereco.codigo)">Remover</button>
+      </cadastro-cliente-endereco>
+    </div>
+  </div>
+</main>

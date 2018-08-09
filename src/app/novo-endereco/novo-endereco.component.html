@@ -1,0 +1,39 @@
+<cadastro-cliente-header>
+  {{titulo}}
+</cadastro-cliente-header>
+<main class="container">
+  <section class="row">
+    <cadastro-cliente-mensagem *ngIf="mensagem != '' && mensagem" [tipo]="tipo" [texto]="mensagem"></cadastro-cliente-mensagem>
+    <form (submit)="cadastrar()" #form="ngForm" class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label>Cliente:</label>
+            <ng-select #selectCliente [allowClear]="true" (typed)="getCliente($event)" (data)="setCliente($event)" placeholder="Procurar cliente..."></ng-select>
+          </div>
+          <div class="form-group">
+            <label>Logradouro</label>
+            <input name="logradouro" [(ngModel)]="endereco.logradouro" #logradouro="ngModel" required type="text" class="form-control">
+            <span *ngIf="logradouro.invalid && logradouro.touched" class="form-control alert-danger">
+              Preencha o campo 'Logradouro'
+            </span>
+          </div>
+          <div class="form-group">
+            <label>Numero</label>
+            <input name="numero" [(ngModel)]="endereco.numero" #numero="ngModel" required type="text" class="form-control">
+            <span *ngIf="numero.invalid && numero.touched" class="form-control alert-danger">
+              Preencha o campo 'Numero'
+            </span>
+          </div>
+          <div class="form-group">
+            <label>Complemento</label>
+            <input name="complemento" [(ngModel)]="endereco.complemento" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary col-sm-3 form-control" [disabled]="form.form.invalid">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>

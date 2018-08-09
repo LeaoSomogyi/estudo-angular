@@ -1,0 +1,12 @@
+<div class="card shadow p-1 mb-3 bg-white rounded">
+  <div class="card-header">
+    {{endereco.logradouro}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{endereco.numero}}</h5>
+    <p class="card-text">{{endereco.complemento}}</p>
+    <a [routerLink]="['/cadastro/', endereco.cliente_codigo, 'cliente', endereco.codigo, 'endereco']" 
+     class="btn btn-info">Editar</a>
+    <ng-content selector="button"></ng-content>
+  </div>
+</div>

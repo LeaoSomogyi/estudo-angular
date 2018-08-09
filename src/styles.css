@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.ui-select-choices[_ngcontent-c0] {
+    display: block !important;
+}
+
+.btn-secondary {
+    color: #212529 !important;
+    background-color: #fff !important;
+}
